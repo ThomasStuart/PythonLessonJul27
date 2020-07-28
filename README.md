@@ -1,6 +1,6 @@
 # PythonLessonJul27
 
-Option A.) program rock, paper, scissors, lizard spock from scratch and then do coding problems 
+Option A.) program rock, paper, scissors, lizard spock from scratch and then do coding problems  <br>
 Option B.) reverse order
 
 ## arrays
