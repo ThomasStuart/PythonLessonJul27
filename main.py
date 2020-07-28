@@ -42,9 +42,7 @@ def generateComputerHand():
 # "computer"
 def compareHands( userHand, computerHand):
 
-    if userHand == computerHand:
-        breakTie()
-    elif userHand == "Rock"     and (computerHand == "Lizard"  or computerHand == "Scissors"):
+    if  userHand == "Rock"     and (computerHand == "Lizard"  or computerHand == "Scissors"):
         return "user"
     elif userHand == "Paper"    and (computerHand == "Rock"    or computerHand == "Spock"):
         return "user"
@@ -61,6 +59,7 @@ def displayResults( userHand, computerHand):
     string = "User: " + userHand + "  vs.   Computer: " + computerHand
     print( string )
 
+
 # The game logic:
 # ----------------
 # 1.) user has to input a random seed to get the random number generator started
@@ -71,11 +70,19 @@ seedString = input("Enter a seed number: ")
 seedNumber = int( seedString )
 seed(seedNumber)
 
-# 2.) select a hand for either rock, paper, sci... spock [5 choices].  user enters that through the keyboard
-userValue   = getUserInput()
+# # 2.) select a hand for either rock, paper, sci... spock [5 choices].  user enters that through the keyboard
+# userValue   = getUserInput()
+#
+# # 3.) generate a random hand for the computer
+# computerValue = generateComputerHand()
+userValue     = "Rock"
+computerValue = "Rock"
 
-# 3.) generate a random hand for the computer
-computerValue = generateComputerHand()
+# while userHand and the computerHand are the same:
+while userValue == computerValue:
+    print("Tied: ", userValue, " vs. ", computerValue)
+    # keep asking the user for as new hand
+    userHand = getUserInput()
 
 # 4.) determine who won
 winner = compareHands( userValue , computerValue)
@@ -83,9 +90,6 @@ winner = compareHands( userValue , computerValue)
 displayResults(userValue, computerValue)
 print( "winner: ", winner )
 
-
-def breakTie():
-    pass
 
 # test data / test cases
 # scenario 1:   User: rock    , computer: paper -> winner: computer
