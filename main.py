@@ -2,7 +2,18 @@
 # functions
 def getUserInput():
     hand = input("Enter a value 1-5 [1: Rock, 2: Paper, 3: Scissors, 4:Lizard , 5: Spock]")
-    return hand
+    hand = int(hand)
+
+    if hand == 1:
+        return "Rock"
+    elif hand == 2:
+        return  "Paper"
+    elif hand == 3:
+        return "Scissors"
+    elif hand == 4:
+        return "Lizard"
+    else:
+        return "Spock"
 
 # Mapping
 # ---------
@@ -26,12 +37,29 @@ def generateComputerHand():
     else:
         return "Spock"
 
-def compareHands( computerValue, userValue):
-    pass
 
-# variables
-winner = ""
+# "user"
+# "computer"
+def compareHands( userHand, computerHand):
 
+    if userHand == computerHand:
+        breakTie()
+    elif userHand == "Rock"     and (computerHand == "Lizard"  or computerHand == "Scissors"):
+        return "user"
+    elif userHand == "Paper"    and (computerHand == "Rock"    or computerHand == "Spock"):
+        return "user"
+    elif userHand == "Scissors" and (computerHand == "Lizard"   or computerHand == "Paper"):
+        return "user"
+    elif userHand == "Lizard"   and (computerHand == "Paper"    or computerHand == "Spock"):
+        return "user"
+    elif userHand == "Spock"    and (computerHand == "Rock"     or computerHand == "Scissors"):
+        return "user"
+    else:
+        return "computer"
+
+def displayResults( userHand, computerHand):
+    string = "User: " + userHand + "  vs.   Computer: " + computerHand
+    print( string )
 
 # The game logic:
 # ----------------
@@ -50,11 +78,11 @@ userValue   = getUserInput()
 computerValue = generateComputerHand()
 
 # 4.) determine who won
+winner = compareHands( userValue , computerValue)
 
+displayResults(userValue, computerValue)
+print( "winner: ", winner )
 
-
-def displayWinnersName( winner ):
-    pass
 
 def breakTie():
     pass
